@@ -9,7 +9,7 @@ module.exports = {
     },
 
     entry: {
-        app: './App'
+        app: './Index'
     },
     module: {
         rules:[
@@ -17,13 +17,14 @@ module.exports = {
                 test: /\.jsx$/,
                 loader: 'babel-loader',
                 options:{
-                    presets: ['@babel/preset-env', '@babel/preset-react']
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: ['react-hot-loader/babel']
                 }
             }
         ]
     },
     output: {
         filename: 'app.js',
-        path: path.join(__dirname, '/dist')
+        path: path.join(__dirname, 'dist')
     }
 }
