@@ -47,6 +47,8 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
+        hot: true
+ 
     },
     output: {
         filename: 'app.js',
