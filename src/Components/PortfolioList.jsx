@@ -4,9 +4,10 @@ import { useParams } from 'react-router-dom';
 
 const StyleDetail = styled.article`
     text-align: center; 
-    padding-top: 60px;
+    /* padding-top: 60px; */
     h2{
-        font-size: 24px;
+        font-size: 27px;
+        font-weight: 600;
         margin-bottom:30px;
     }
     p{
@@ -18,11 +19,7 @@ const PortfolioList = ({contents}) => {
     let params = useParams();
     const pf_id = params.pf_id;
 
-
-    let select_portfolio = {
-        id: 0,
-        text: ''
-    }
+    let select_portfolio;
     for (let i = 0; i < contents.length; i++) {
         if(contents[i].id === Number(pf_id)){
             select_portfolio = contents[i];
@@ -34,7 +31,8 @@ const PortfolioList = ({contents}) => {
         <StyleDetail> 
             <h2>{select_portfolio.title}</h2>
             <p> {select_portfolio.text} </p>
-            { select_portfolio.link && <p><a target="_blank" href={select_portfolio.link}>홈페이지</a></p> }
+            {select_portfolio.desc && <p>{select_portfolio.desc}</p>} 
+            {select_portfolio.link && <p><a target="_blank" href={select_portfolio.link} title="새 창에서 열림">홈페이지</a></p>}
         </StyleDetail>
     )
 }

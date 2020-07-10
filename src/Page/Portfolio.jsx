@@ -3,18 +3,21 @@ import styled from 'styled-components';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import PortfolioList from '../Components/PortfolioList';
 import Masonry from 'react-masonry-component';
+import { AnimatedSwitch } from 'react-router-transition';
+
 
 const ItemWrap = styled.div`
     position:relative;
     overflow:hidden;
 `
 const Item = styled.div`
-    width: calc(50% - 20px);
-    height: 150px;
+    width: calc(25% - 20px);
+    height: 160px;
     border-radius: 5px;
     overflow: hidden;
     border: 1px solid #ebebeb;
     margin: 0 20px 20px 0;
+    background-color: #fff;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: auto;
@@ -83,31 +86,37 @@ const Portfolio = ({contents}) => {
 
     return (
         <>
-            <ItemWrap>
-                <Masonry
-                    className={''} // default ''
-                    elementType={'ul'} // default 'div'
-                    options={masonryOptions} // default {}
-                    disableImagesLoaded={true} // default false
-                    updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-                    imagesLoadedOptions={imagesLoadedOptions} // default {}
-                >
-                    {childElements}
-                </Masonry>
-            </ItemWrap>
-
-            <div>
-                <Switch>
-                    <Route exact path="/portfolio">
-                        <h2>
-                            기본페이지
-                        </h2>
-                    </Route>
-                    <Route path="/portfolio/:pf_id">
-                        <PortfolioList contents={contents}/>
-                    </Route>
-                </Switch>
-            </div>
+            <AnimatedSwitch 
+                atEnter={{opacity:0, offset: -50}}
+                atLeave={{opacity:0, offset: 50}}
+                atActive={{opacity:1, offset: 0}}
+                mapStyles={(styles)=>({
+                    opacity: styles.opacity,
+                    transform: `translateY(${styles.offset}px)`,
+                })}
+                className="switch-wrapper"
+            >
+                <Route exact path="/portfolio">
+                    <h2>
+                        기본페이지
+                    </h2>
+                    <ItemWrap>
+                        <Masonry
+                            className={''} // default ''
+                            elementType={'ul'} // default 'div'
+                            options={masonryOptions} // default {}
+                            disableImagesLoaded={true} // default false
+                            updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+                            imagesLoadedOptions={imagesLoadedOptions} // default {}
+                        >
+                            {childElements}
+                        </Masonry>
+                    </ItemWrap>
+                </Route>
+                <Route path="/portfolio/:pf_id">
+                    <PortfolioList contents={contents}/>
+                </Route>
+            </AnimatedSwitch>
         </>
     )
 }
