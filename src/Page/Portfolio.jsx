@@ -1,97 +1,113 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import PortfolioList from '../Components/PortfolioList';
+import Masonry from 'react-masonry-component';
 
-const CardWrap = styled.div`
+const ItemWrap = styled.div`
     position:relative;
-`
-const Card = styled.div`
-    /* display: flex;
-    align-items: flex-end;
-    justify-content: center; */
-    position: fixed;
-    left:0;
-    right:0;
-    bottom:30px;
-    width:100%;
-    height:250px;
-    max-width: 1480px;
-    margin:0 auto;
-    overflow: hidden;
-    /* min-height:100vh; */
+    overflow:hidden;
 `
 const Item = styled.div`
-    position:absolute;
-    width:300px;
-    height:100%;
-    border-radius: 3px;
-    padding: 20px;
-    transition: all .3s;
-    border: 2px solid #e9e9e9;
+    width: calc(50% - 20px);
+    height: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #ebebeb;
+    margin: 0 20px 20px 0;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: auto;
+    transition: box-shadow .25s;
     &:hover{
-        box-shadow: 0 3px rgba(0,0,0,.3);
-    }
-    &:not(:hover){
-        /* margin-top: 50px; */
+        box-shadow: 0 3px 10px rgba(0,0,0,.1);
     }
     a{
         display:block;
         width:100%;
         height:100%;
+        /* padding: 20px; */
+        transition: all .25s;
         &.active{
-            color:red;
+            box-shadow:inset 0 0 0 3px #615fd0;
         }
     }
 `
+const ItemDesc = styled.div`
+    width:100%;
+    height:100%;
+    padding:30px;
+    background: rgba(0,0,0,.5);
+    color:white;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    h3{
+        font-size: 22px;
+        font-weight: 400;
+        letter-spacing: -0.05em;
+        margin-bottom: 10px;
+    }
+`
+
+const masonryOptions = {
+    transitionDuration: 250
+};
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 const Portfolio = ({contents}) => {
-    const cardPosition = () => {
-        document.querySelectorAll('.item').forEach((v,i)=>{
-            const width = v.clientWidth;
-            const gutter = 20;
-            const posX = (width + gutter) * i;
-
-            //console.log(v, i, width, posX);
-            v.style.left = `${posX}px`;
-        })
-    }
-    
-    useEffect(() => {
-        cardPosition();
-        return () => {
-            //cleanup
+    const childElements = contents.map(function(el){
+        const [show, setShow] = useState(false);
+        const mouseOver = () => {
+            setShow(true);
         }
-    }, [])
-    
-    const pfList = [];
-    for (let i = 0; i < contents.length; i++) {
-        pfList.push(
-            <Item key={contents[i].id} className="item">
-                <NavLink to={'/portfolio/'+contents[i].id}>
-                    <h3>{contents[i].title}</h3>
-                    <p>{contents[i].desc}</p>
+        const mouseLeave = () => {
+            setShow(false);
+        }
+        
+        return (
+             <Item key={el.id} style={{'backgroundImage': `url(${el.src})`}} >
+                <NavLink to={'/portfolio/'+el.id} onMouseEnter={mouseOver} onMouseLeave={mouseLeave} >
+                    {/* {show && (
+                        <ItemDesc>
+                            <h3>{el.title}</h3>
+                            <p>{el.desc}</p>
+                        </ItemDesc>
+                    )} */}
                 </NavLink>
             </Item>
-        );
-    }
+         );
+    });
 
     return (
         <>
-            <Switch>
-                <Route path="/portfolio/:pf_id">
-                    <PortfolioList contents={contents} />
-                </Route>
-                <Route path="/">
-                    기본페이지
-                </Route>
-            </Switch>
+            <ItemWrap>
+                <Masonry
+                    className={''} // default ''
+                    elementType={'ul'} // default 'div'
+                    options={masonryOptions} // default {}
+                    disableImagesLoaded={true} // default false
+                    updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+                    imagesLoadedOptions={imagesLoadedOptions} // default {}
+                >
+                    {childElements}
+                </Masonry>
+            </ItemWrap>
 
-            <CardWrap>
-                <Card>
-                    {pfList}
-                </Card>
-            </CardWrap>
+            <div>
+                <Switch>
+                    <Route exact path="/portfolio">
+                        <h2>
+                            기본페이지
+                        </h2>
+                    </Route>
+                    <Route path="/portfolio/:pf_id">
+                        <PortfolioList contents={contents}/>
+                    </Route>
+                </Switch>
+            </div>
         </>
     )
 }

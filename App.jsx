@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Reset } from 'styled-reset';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, NavLink, Switch } from 'react-router-dom';
@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
         color: #333;
         font-weight: 400 ;
         min-height:100vh;
-        border: 8px solid #ebebeb;
+        /* border: 8px solid #ebebeb; */
     }
     a{
         color: inherit;
@@ -81,15 +81,18 @@ const Content = styled.section`
     max-width:1480px;
     margin:0 auto;
     padding-top: 80px;
+    display:flex;
+    & > div{
+        width: 50%;
+    }
 `
 
 const contents = [
-    {id:1, title: "휴롬", desc: "desc", text: "text", link:"http://www.hurom.co.kr"},
-    {id:2, title: "정토회", desc: "desc", text: "text", link: ""},
-    {id:3, title: "S-Oil E-Biz", desc: "desc", text: "text", link:""},
-    {id:4, title: "스낵월드", desc: "desc", text: "text", link:""},
-    {id:5, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com"},
-    {id:6, title: "TK 정형외과", desc: "desc", text: "text", link:"http://toptk.co.kr/main.php"},
+    {id:1, title: "휴롬", desc: "구축", text: "textv", link:"http://www.hurom.co.kr", src:"/src/Img/Thumb/hurom.png"},
+    {id:2, title: "정토회", desc: "구축", text: "text", link: "", src:"/src/Img/Thumb/jungto.png"},
+    {id:3, title: "샘표 연두", desc: "구축", text: "text", link:"http://yondu.co.kr/m", src:"/src/Img/Thumb/yondu.png"},
+    {id:4, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com", src:"/src/Img/Thumb/sempio.svg"},
+    {id:5, title: "TK 정형외과", desc: "desc", text: "text", link:"http://www.toptk.co.kr", src:"/src/Img/Thumb/tk.png"},
 ]
 
 const App = () => {
@@ -116,8 +119,6 @@ const App = () => {
                     </Route>
                 </Switch>
             </Content>
-
-
 
             <Reset/>
             <GlobalStyle/>
