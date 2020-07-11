@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Reset } from 'styled-reset';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, NavLink } from 'react-router-dom';
@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
         color: inherit;
         text-decoration:none;
     }
+    img{
+        max-width:100%;
+
+    }
     .switch-wrapper {
         position: relative;
     }
@@ -47,6 +51,8 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 const LayoutHeader = styled.header`
+    display:flex;
+    align-items: center;
     position: fixed;
     top:30px;
     right:0;
@@ -54,10 +60,14 @@ const LayoutHeader = styled.header`
     width:100%;
     max-width: 1480px;
     margin: 0 auto;
+    h1{
+        width:60px;
+    }
     ul{
         display: flex;
         align-items: center;;
         justify-content: flex-end;
+        margin-left: auto;
         li{
             a{
                 position: relative;
@@ -88,7 +98,7 @@ const LayoutHeader = styled.header`
     }
 `
 const Content = styled.section`
-    max-width:1480px;
+    max-width:1280px;
     margin:0 auto;
     padding-top: 150px;
 `
@@ -102,45 +112,63 @@ const contents = [
     {id:6, title: "시력회복연구소", desc: "desc", text: "text", link:"http://www.eyerec.org/", src:"/src/Img/Thumb/eye.png"},
 ]
 
-const App = () => {
-    return(
-        <>
-            <LayoutHeader>
-                <ul>
-                    <li><NavLink exact to="/">home</NavLink></li>
-                    <li><NavLink to="/about">about</NavLink></li>
-                    <li><NavLink to="/portfolio">portfolio</NavLink></li>
-                </ul>
-            </LayoutHeader>
+class App extends Component {
+    state = { 
+        isLoading: true
+    }
 
-            <Content>
-                <AnimatedSwitch 
-                    atEnter={{opacity:0, offset: -50}}
-                    atLeave={{opacity:0, offset: 50}}
-                    atActive={{opacity:1, offset: 0}}
-                    mapStyles={(styles)=>({
-                        opacity: styles.opacity,
-                        transform: `translateY(${styles.offset}px)`
-                    })}
-                    className="switch-wrapper"
-                >
-                    <Route exact path="/">
-                        <Home/>
-                    </Route>
-                    <Route path="/about">
-                        <About/>
-                    </Route>
-                    <Route path="/portfolio">
-                        <Portfolio contents={contents} />
-                    </Route>
-                </AnimatedSwitch>
-            </Content>
+    componentDidMount(){
+        this.setState({isLoading: false})
+    }
 
-            <Reset/>
-            <GlobalStyle/>
-        </>
-    )
+    render(){
+        return(
+            <>
+                {
+                    this.state.isLoading 
+                    ? "loading..." 
+                    : 
+                    <>
+                        <LayoutHeader>
+                            <h1><NavLink exact to="/"><img src="/src/Img/logo.png" alt=""/></NavLink></h1>
+                            <ul>
+                                {/* <li><NavLink exact to="/">Home</NavLink></li> */}
+                                <li><NavLink exact to="/">About</NavLink></li>
+                                <li><NavLink to="/portfolio">Portfolio</NavLink></li>
+                            </ul>
+                        </LayoutHeader>
+                        <Content>
+                            <AnimatedSwitch 
+                                atEnter={{opacity:0, offset: -50}}
+                                atLeave={{opacity:0, offset: 50}}
+                                atActive={{opacity:1, offset: 0}}
+                                mapStyles={(styles)=>({
+                                    opacity: styles.opacity,
+                                    transform: `translateY(${styles.offset}px)`
+                                })}
+                                className="switch-wrapper"
+                            >
+                                {/* <Route exact path="/">
+                                    <Home/>
+                                </Route> */}
+                                <Route exact path="/">
+                                    <About/>
+                                </Route>
+                                <Route path="/portfolio">
+                                    <Portfolio contents={contents} />
+                                </Route>
+                            </AnimatedSwitch>
+                        </Content>
+                        <Reset/>
+                        <GlobalStyle/>
+                    </>
+                }
+                
+            </>
+        )
+    }
 }
+
 
 export default App;
 
