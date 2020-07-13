@@ -4,7 +4,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { Route, NavLink } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 
-import Home from './src/Page/Home';
 import About from './src/Page/About';
 import Portfolio from './src/Page/Portfolio';
 
@@ -148,9 +147,6 @@ class App extends Component {
                                 })}
                                 className="switch-wrapper"
                             >
-                                {/* <Route exact path="/">
-                                    <Home/>
-                                </Route> */}
                                 <Route exact path="/">
                                     <About/>
                                 </Route>
