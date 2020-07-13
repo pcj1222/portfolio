@@ -9,14 +9,15 @@ import { AnimatedSwitch } from 'react-router-transition';
 const ItemWrap = styled.div`
     position:relative;
     overflow:hidden;
+    padding: 0 20px;
 `
 const Item = styled.div`
-    width: calc(25% - 20px);
+    width: 100%;
     height: 160px;
     border-radius: 5px;
     overflow: hidden;
     border: 1px solid #ebebeb;
-    margin: 0 20px 20px 0;
+    margin: 0 0 20px 0;
     background-color: #fff;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -35,7 +36,16 @@ const Item = styled.div`
             box-shadow:inset 0 0 0 3px #615fd0;
         }
     }
-`
+
+    @media ${(props) => props.theme.tablet} {
+        width: calc(50% - 20px);
+        margin: 0 10px 20px 10px;
+    }
+    @media ${(props) => props.theme.desktop} {
+        width: calc(25% - 20px);
+    }
+`;
+
 const ItemDesc = styled.div`
     width:100%;
     height:100%;
