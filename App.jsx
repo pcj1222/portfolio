@@ -11,16 +11,16 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'spoqa';
         font-weight: 400;
-        src: url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.ttf'),
-        url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff'),
-        url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff2');
+        src: url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.ttf'),
+        url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff'),
+        url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff2');
     }
     @font-face {
         font-family: 'spoqa';
         font-weight: 500;
-        src: url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.ttf'),
-        url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff'),
-        url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff2');
+        src: url('.src/Assets/Fonts/Spoqa_Han_Sans_Bold.ttf'),
+        url('./src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff'),
+        url('./src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff2');
     }
     *{
         box-sizing:border-box;
@@ -103,12 +103,12 @@ const Content = styled.section`
 `
 
 const contents = [
-    {id:1, title: "휴롬", desc: "구축", text: "5?", link:"http://www.hurom.co.kr", src:"/src/Img/Thumb/hurom.png"},
-    {id:2, title: "정토회", desc: "구축", text: "text", link: "", src:"/src/Img/Thumb/jungto.png"},
-    {id:3, title: "샘표 연두", desc: "", text: "text", link:"http://yondu.co.kr/m", src:"/src/Img/Thumb/yondu.png"},
-    {id:4, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com", src:"/src/Img/Thumb/sempio.svg"},
-    {id:5, title: "TK 정형외과", desc: "desc", text: "text", link:"http://www.toptk.co.kr", src:"/src/Img/Thumb/tk.png"},
-    {id:6, title: "시력회복연구소", desc: "desc", text: "text", link:"http://www.eyerec.org/", src:"/src/Img/Thumb/eye.png"},
+    {id:1, title: "휴롬", desc: "구축", text: "5?", link:"http://www.hurom.co.kr", src:"./src/Img/Thumb/hurom.png"},
+    {id:2, title: "정토회", desc: "구축", text: "text", link: "", src:"./src/Img/Thumb/jungto.png"},
+    {id:3, title: "샘표 연두", desc: "", text: "text", link:"http://yondu.co.kr/m", src:"./src/Img/Thumb/yondu.png"},
+    {id:4, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com", src:"./src/Img/Thumb/sempio.svg"},
+    {id:5, title: "TK 정형외과", desc: "desc", text: "text", link:"http://www.toptk.co.kr", src:"./src/Img/Thumb/tk.png"},
+    {id:6, title: "시력회복연구소", desc: "desc", text: "text", link:"http://www.eyerec.org/", src:"./src/Img/Thumb/eye.png"},
 ]
 
 class App extends Component {
@@ -129,7 +129,7 @@ class App extends Component {
                     : 
                     <>
                         <LayoutHeader>
-                            <h1><NavLink exact to="/"><img src="/src/Img/logo.png" alt=""/></NavLink></h1>
+                            <h1><NavLink exact to="/"><img src="./src/Img/logo.png" alt=""/></NavLink></h1>
                             <ul>
                                 {/* <li><NavLink exact to="/">Home</NavLink></li> */}
                                 <li><NavLink exact to="/">About</NavLink></li>

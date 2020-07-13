@@ -30,7 +30,6 @@ const Item = styled.div`
         display:block;
         width:100%;
         height:100%;
-        /* padding: 20px; */
         transition: all .25s;
         &.active{
             box-shadow:inset 0 0 0 3px #615fd0;
@@ -45,7 +44,6 @@ const Item = styled.div`
         width: calc(25% - 20px);
     }
 `;
-
 const ItemDesc = styled.div`
     width:100%;
     height:100%;
