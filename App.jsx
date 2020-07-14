@@ -102,15 +102,6 @@ const Content = styled.section`
     padding-top: 150px;
 `
 
-const contents = [
-    {id:1, title: "휴롬", desc: "구축", text: "5?", link:"http://www.hurom.co.kr", src:"./src/Img/Thumb/hurom.png"},
-    {id:2, title: "정토회", desc: "구축", text: "text", link: "", src:"./src/Img/Thumb/jungto.png"},
-    {id:3, title: "샘표 연두", desc: "", text: "text", link:"http://yondu.co.kr/m", src:"./src/Img/Thumb/yondu.png"},
-    {id:4, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com", src:"./src/Img/Thumb/sempio.svg"},
-    {id:5, title: "TK 정형외과", desc: "desc", text: "text", link:"http://www.toptk.co.kr", src:"./src/Img/Thumb/tk.png"},
-    {id:6, title: "시력회복연구소", desc: "desc", text: "text", link:"http://www.eyerec.org/", src:"./src/Img/Thumb/eye.png"},
-]
-
 class App extends Component {
     state = { 
         isLoading: true
@@ -151,7 +142,7 @@ class App extends Component {
                                     <About/>
                                 </Route>
                                 <Route path="/portfolio">
-                                    <Portfolio contents={contents} />
+                                    <Portfolio />
                                 </Route>
                             </AnimatedSwitch>
                         </Content>

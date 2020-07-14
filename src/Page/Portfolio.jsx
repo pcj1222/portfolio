@@ -44,50 +44,27 @@ const Item = styled.div`
         width: calc(25% - 20px);
     }
 `;
-const ItemDesc = styled.div`
-    width:100%;
-    height:100%;
-    padding:30px;
-    background: rgba(0,0,0,.5);
-    color:white;
-    text-align: center;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    h3{
-        font-size: 22px;
-        font-weight: 400;
-        letter-spacing: -0.05em;
-        margin-bottom: 10px;
-    }
-`
-
 const masonryOptions = {
     transitionDuration: 250
 };
 const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
-const Portfolio = ({contents}) => {
-    const childElements = contents.map(function(el){
-        const [show, setShow] = useState(false);
-        const mouseOver = () => {
-            setShow(true);
-        }
-        const mouseLeave = () => {
-            setShow(false);
-        }
-        
+
+
+const Portfolio = () => {
+    const contents = [
+        {id:1, title: "휴롬", desc: "구축", text: "5?", link:"http://www.hurom.co.kr", src:"./src/Assets/Images/Thumb/hurom.png"},
+        {id:2, title: "정토회", desc: "구축", text: "text", link: "", src:"./src/Assets/Images/Thumb/jungto.png"},
+        {id:3, title: "샘표 연두", desc: "", text: "text", link:"http://yondu.co.kr/m", src:"./src/Assets/Images/Thumb/yondu.png"},
+        {id:4, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com", src:"./src/Assets/Images/Thumb/sempio.svg"},
+        {id:5, title: "TK 정형외과", desc: "desc", text: "text", link:"http://www.toptk.co.kr", src:"./src/Assets/Images/Thumb/tk.png"},
+        {id:6, title: "시력회복연구소", desc: "desc", text: "text", link:"http://www.eyerec.org/", src:"./src/Assets/Images/Thumb/eye.png"},
+    ]
+
+    const childElements = contents.map(function(content){
         return (
-             <Item key={el.id} style={{'backgroundImage': `url(${el.src})`}} >
-                <NavLink to={'/portfolio/'+el.id} onMouseEnter={mouseOver} onMouseLeave={mouseLeave} >
-                    {/* {show && (
-                        <ItemDesc>
-                            <h3>{el.title}</h3>
-                            <p>{el.desc}</p>
-                        </ItemDesc>
-                    )} */}
-                </NavLink>
+             <Item key={content.id} style={{'backgroundImage': `url(${content.src})`}} >
+                <NavLink to={'/portfolio/'+content.id}></NavLink>
             </Item>
          );
     });
@@ -110,12 +87,12 @@ const Portfolio = ({contents}) => {
                     </h2>
                     <ItemWrap>
                         <Masonry
-                            className={''} // default ''
-                            elementType={'ul'} // default 'div'
-                            options={masonryOptions} // default {}
-                            disableImagesLoaded={true} // default false
-                            updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-                            imagesLoadedOptions={imagesLoadedOptions} // default {}
+                            className={''} 
+                            elementType={'ul'} 
+                            options={masonryOptions} 
+                            disableImagesLoaded={false} 
+                            updateOnEachImageLoad={false} 
+                            imagesLoadedOptions={imagesLoadedOptions} 
                         >
                             {childElements}
                         </Masonry>
