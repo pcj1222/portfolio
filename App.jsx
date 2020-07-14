@@ -11,16 +11,16 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'spoqa';
         font-weight: 400;
-        src: url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.ttf'),
-        url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff'),
-        url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff2');
+        src: url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.ttf'),
+        url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff'),
+        url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff2');
     }
     @font-face {
         font-family: 'spoqa';
         font-weight: 500;
-        src: url('.src/Assets/Fonts/Spoqa_Han_Sans_Bold.ttf'),
-        url('./src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff'),
-        url('./src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff2');
+        src: url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.ttf'),
+        url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff'),
+        url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff2');
     }
     *{
         box-sizing:border-box;

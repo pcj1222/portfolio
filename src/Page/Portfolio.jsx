@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Route, NavLink, Switch } from 'react-router-dom';
-import PortfolioList from '../Components/PortfolioList';
+import PortfolioDetail from '../Components/PortfolioDetail';
 import Masonry from 'react-masonry-component';
 import { AnimatedSwitch } from 'react-router-transition';
 
@@ -53,17 +53,23 @@ const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 const Portfolio = () => {
     const contents = [
-        {id:1, title: "휴롬", desc: "구축", text: "5?", link:"http://www.hurom.co.kr", src:"./src/Assets/Images/Thumb/hurom.png"},
-        {id:2, title: "정토회", desc: "구축", text: "text", link: "", src:"./src/Assets/Images/Thumb/jungto.png"},
-        {id:3, title: "샘표 연두", desc: "", text: "text", link:"http://yondu.co.kr/m", src:"./src/Assets/Images/Thumb/yondu.png"},
-        {id:4, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com", src:"./src/Assets/Images/Thumb/sempio.svg"},
-        {id:5, title: "TK 정형외과", desc: "desc", text: "text", link:"http://www.toptk.co.kr", src:"./src/Assets/Images/Thumb/tk.png"},
-        {id:6, title: "시력회복연구소", desc: "desc", text: "text", link:"http://www.eyerec.org/", src:"./src/Assets/Images/Thumb/eye.png"},
+        {
+            id:1, title: "휴롬", desc: "구축", text: [{text1:"??", text2:"두번재"}] , link:"http://www.hurom.co.kr",
+            thumb:"./src/Assets/Images/Thumb/hurom.png", 
+            imgSet: ["https://placehold.it/1280x600", "https://placehold.it/1280x580"]
+        },
+        {
+            id:2, title: "정토회", desc: "구축", text: "text", link: "", thumb:"./src/Assets/Images/Thumb/jungto.png"
+        },
+        {id:3, title: "샘표 연두", desc: "", text: "text", link:"http://yondu.co.kr/m", thumb:"./src/Assets/Images/Thumb/yondu.png"},
+        {id:4, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com", thumb:"./src/Assets/Images/Thumb/sempio.svg"},
+        {id:5, title: "TK 정형외과", desc: "desc", text: "text", link:"http://www.toptk.co.kr", thumb:"./src/Assets/Images/Thumb/tk.png"},
+        {id:6, title: "시력회복연구소", desc: "desc", text: "text", link:"http://www.eyerec.org/", thumb:"./src/Assets/Images/Thumb/eye.png"},
     ]
 
     const childElements = contents.map(function(content){
         return (
-             <Item key={content.id} style={{'backgroundImage': `url(${content.src})`}} >
+             <Item key={content.id} style={{'backgroundImage': `url(${content.thumb})`}} >
                 <NavLink to={'/portfolio/'+content.id}></NavLink>
             </Item>
          );
@@ -99,7 +105,7 @@ const Portfolio = () => {
                     </ItemWrap>
                 </Route>
                 <Route path="/portfolio/:pf_id">
-                    <PortfolioList contents={contents}/>
+                    <PortfolioDetail contents={contents}/>
                 </Route>
             </AnimatedSwitch>
         </>
