@@ -48,6 +48,9 @@ const GlobalStyle = createGlobalStyle`
         position: absolute;
         width:100%;
     }
+    /* ::-webkit-scrollbar{
+        display:none;
+    } */
 `;
 const LayoutHeader = styled.header`
     display:flex;
