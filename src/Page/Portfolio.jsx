@@ -58,8 +58,8 @@ const Portfolio = () => {
             link:"http://www.hurom.co.kr",
             participation: '90%',
             skill : 'html, css, javascript, jquery',
-            thumb:"/src/Assets/Images/Thumb/hurom.png", 
-            imgSet: ["/src/Assets/Images/Portfolio/thumb_hurom1.jpg"]
+            thumb:"./src/Assets/Images/Thumb/hurom.png", 
+            imgSet: ["./src/Assets/Images/Portfolio/thumb_hurom1.jpg"]
         },
         {
             id:2, title: "정토회", type: "구축, 데스크탑", 
@@ -68,7 +68,7 @@ const Portfolio = () => {
             participation: '100%',
             skill : 'html, scss, javascript, jquery',
             thumb:"./src/Assets/Images/Thumb/jungto.png",
-            imgSet: ["/src/Assets/Images/Portfolio/thumb_jungto1.jpg"]
+            imgSet: ["./src/Assets/Images/Portfolio/thumb_jungto1.jpg"]
         },
         {
             id:3, title: "샘표 연두", type: "구축, 모바일", 
@@ -76,7 +76,7 @@ const Portfolio = () => {
             participation: '100%',
             skill : 'html, css, javascript, jquery',
             thumb:"./src/Assets/Images/Thumb/yondu.png",
-            imgSet: ["/src/Assets/Images/Portfolio/thumb_yondu1.jpg"]
+            imgSet: ["./src/Assets/Images/Portfolio/thumb_yondu1.jpg"]
         },
         {
             id:4, title: "TK 정형외과", type: "구축, 모바일", 
@@ -84,7 +84,7 @@ const Portfolio = () => {
             participation: '100%',
             skill : 'html, css, javascript, jquery', 
             thumb:"./src/Assets/Images/Thumb/tk.png",
-            imgSet: ["/src/Assets/Images/Portfolio/thumb_toptk.jpg"]
+            imgSet: ["./src/Assets/Images/Portfolio/thumb_toptk.jpg"]
         },
         {
             id:5, title: "시력회복연구소", type: "구축, 데스크탑",
@@ -92,13 +92,13 @@ const Portfolio = () => {
             participation: '100%',
             skill : 'html, css, javascript, jquery',  
             thumb:"./src/Assets/Images/Thumb/eye.png",
-            imgSet: ["/src/Assets/Images/Portfolio/thumb_eye1.jpg"]
+            imgSet: ["./src/Assets/Images/Portfolio/thumb_eye1.jpg"]
         },
         {
             id:6, title: "샘표", type: "유지보수", 
             text: "text", link:"https://www.sempio.com", 
             thumb:"./src/Assets/Images/Thumb/sempio.svg",
-            imgSet: ["/src/Assets/Images/Portfolio/thumb_sempio.jpg"]
+            imgSet: ["./src/Assets/Images/Portfolio/thumb_sempio.jpg"]
         },
     ]
 
