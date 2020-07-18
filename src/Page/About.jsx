@@ -118,6 +118,7 @@ const slideData = [
         skill: 'typescript, node, vue'
     }
 ];
+
 class SliderLeftArrow extends Component {
   render() {
     const { onClick } = this.props;
