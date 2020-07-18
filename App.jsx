@@ -144,7 +144,7 @@ class App extends Component {
                                 })}
                                 className="switch-wrapper"
                             >
-                                <Route exact path="/">
+                                <Route exact path="/home/">
                                     <About />
                                 </Route>
                                 <Route path="/portfolio/">
