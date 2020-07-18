@@ -105,7 +105,7 @@ const Portfolio = () => {
     const childElements = contents.map(function(content){
         return (
              <Item key={content.id} style={{'backgroundImage': `url(${content.thumb})`}} >
-                <NavLink to={'/home/portfolio/'+content.id}></NavLink>
+                <NavLink to={'/portfolio/'+content.id}></NavLink>
             </Item>
          );
     });
