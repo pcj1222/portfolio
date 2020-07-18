@@ -40,7 +40,10 @@ const Slider = styled.ul`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 600px;
+    min-height: calc(100vh - 60px);
+    @media ${(props) => props.theme.tablet} {
+        min-height: 600px;
+    }
     .carousel__slide {
         display: none;
         text-align: center;
@@ -53,12 +56,20 @@ const Slider = styled.ul`
     }
 `
 const SkillList = styled.div`
-    width: 50%;
+    width: 70%;
     margin: 20px auto 0;
     padding-top: 20px;
     border-top: 1px dashed #c9c9c9;
     span{
+        display: block;
         margin: 0 10px;
+        line-height:1.5em;
+    }
+    @media ${(props) => props.theme.tablet} {
+        width: 50%;
+        span{
+            display: inline-block;
+        }
     }
 `
 const Indicator = styled.ul`
@@ -94,10 +105,18 @@ const Arrow = styled.a`
     position: absolute;
     top: 50%;
     &.prev{
-        left:0;
+        left:10px;
     }
     &.next{
-        right:0;
+        right:10px;
+    }
+    @media ${(props) => props.theme.tablet} {
+        &.prev{
+            left:0;
+        }
+        &.next{
+            right:0;
+        }
     }
 `
 

@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import * as Icon from 'react-feather';
+import { Route, NavLink } from 'react-router-dom';
 
 const WrapDetail = styled.article`
-    padding:0 30px;
+    padding:80px 30px 50px;
+    @media ${ (props) => props.theme.tablet } {
+        padding-top:0;
+    }
     h2{
         font-size: 27px;
         font-weight: 600;
@@ -47,6 +51,11 @@ const Desc = styled.div`
     p{
         padding-left:20px
     }
+`
+const ButtonBack = styled.div`
+    margin: 0 auto;
+    display: block !important;
+    text-align: center;
 `
 
 
@@ -92,7 +101,14 @@ const PortfolioList = ({contents}) => {
                 }
 
                 { thumbImg === true ? 
-                    select_portfolio.imgSet && select_portfolio.imgSet.map((v,i)=> {return <Thumb key={i}><img src={v}></img></Thumb> }) : 
+                    select_portfolio.imgSet && select_portfolio.imgSet.map((v,i)=> {
+                        return (
+                            <>
+                                <Thumb key={i}><img src={v}></img></Thumb> 
+                                <ButtonBack><NavLink to="/portfolio/" title="목록으로"><Icon.ArrowLeftCircle size={48} /></NavLink></ButtonBack>
+                            </>
+                        )
+                    }) : 
                     null 
                 }
             </>

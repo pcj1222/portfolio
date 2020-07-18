@@ -8,7 +8,10 @@ import { AnimatedSwitch } from 'react-router-transition';
 const ItemWrap = styled.div`
     position:relative;
     overflow:hidden;
-    padding: 0 20px;
+    padding: 80px 20px 0;
+    @media ${ (props) => props.theme.tablet } {
+        padding-top:0;
+    }
 `
 const Item = styled.div`
     width: 100%;

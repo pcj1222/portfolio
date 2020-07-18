@@ -59,13 +59,20 @@ const LayoutHeader = styled.header`
     display:flex;
     align-items: center;
     position: fixed;
-    top:30px;
+    top:0;
     right:0;
     left:0;
     width:100%;
     max-width: 1480px;
     margin: 0 auto;
     z-index: 99;
+    background:#fff;
+
+    @media ${(props) => props.theme.tablet} {
+        background:none;
+        top:30px;
+    }
+
     h1{
         width:60px;
     }
@@ -106,7 +113,9 @@ const LayoutHeader = styled.header`
 const Content = styled.section`
     max-width:1280px;
     margin:0 auto;
-    padding-top: 150px;
+    @media ${(props) => props.theme.tablet} {
+        padding-top: 150px;
+    }
 `
 
 class App extends Component {
