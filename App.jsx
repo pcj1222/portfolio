@@ -11,16 +11,16 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'spoqa';
         font-weight: 400;
-        src: url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.ttf'),
-        url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff'),
-        url('/src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff2');
+        src: url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.ttf'),
+        url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff'),
+        url('./src/Assets/Fonts/Spoqa_Han_Sans_Regular.woff2');
     }
     @font-face {
         font-family: 'spoqa';
         font-weight: 500;
-        src: url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.ttf'),
-        url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff'),
-        url('/src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff2');
+        src: url('./src/Assets/Fonts/Spoqa_Han_Sans_Bold.ttf'),
+        url('./src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff'),
+        url('./src/Assets/Fonts/Spoqa_Han_Sans_Bold.woff2');
     }
     *{
         box-sizing:border-box;
@@ -127,10 +127,10 @@ class App extends Component {
                     : 
                     <>
                         <LayoutHeader>
-                            <h1><NavLink exact to="/"><img src="/src/Assets/Images/logo.png" alt=""/></NavLink></h1>
+                            <h1><NavLink exact to="/"><img src="./src/Assets/Images/logo.png" alt=""/></NavLink></h1>
                             <ul>
-                                <li><NavLink exact to="/">About</NavLink></li>
-                                <li><NavLink to="/portfolio">Portfolio</NavLink></li>
+                                <li><NavLink exact to="/home/">About</NavLink></li>
+                                <li><NavLink to="/portfolio/">Portfolio</NavLink></li>
                             </ul>
                         </LayoutHeader>
                         <Content>
@@ -147,7 +147,7 @@ class App extends Component {
                                 <Route exact path="/">
                                     <About />
                                 </Route>
-                                <Route path="/portfolio">
+                                <Route path="/portfolio/">
                                     <Portfolio />
                                 </Route>
                             </AnimatedSwitch>
