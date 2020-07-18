@@ -59,7 +59,8 @@ const Portfolio = () => {
             participation: '90%',
             skill : 'html, css, javascript, jquery',
             thumb:"./src/Assets/Images/Thumb/hurom.png", 
-            imgSet: ["./src/Assets/Images/Portfolio/thumb_hurom1.jpg"]
+            imgSet: ["./src/Assets/Images/Portfolio/thumb_hurom1.jpg"],
+            // descSet: ["" , ""]
         },
         {
             id:2, title: "정토회", type: "구축, 데스크탑", 

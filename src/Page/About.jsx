@@ -52,6 +52,15 @@ const Slider = styled.ul`
         }
     }
 `
+const SkillList = styled.div`
+    width: 50%;
+    margin: 20px auto 0;
+    padding-top: 20px;
+    border-top: 1px dashed #c9c9c9;
+    span{
+        margin: 0 10px;
+    }
+`
 const Indicator = styled.ul`
     display: flex;
     flex-direction: row;
@@ -108,13 +117,15 @@ const slideData = [
         ]
     },{
         title: '할 줄 알아요',
+        desc: ['웹표준, 웹 접근성, 시멘틱 마크업 지키는 것은 물론 유지보수가 용이하고', '재사용이 가능하도록 최대한 컴포넌트화해서 작업합니다.'],
         skill: 'html5, css3, sass, javascript, jquery',
     },{
         title: '지금은',
-        desc: ['더욱 더 다지기 위해 자바스크립트와 '],
+        desc: ['퍼블리셔에서 프론트엔드로 나아가기 위해 자바스크립트는 물론', '리액트, 웹팩 등을 공부하는 중 입니다.'],
         skill: 'javascript, webpack, react'
     },{
         title: '앞으로는',
+        desc: ['자바스크립트와 리액트를 능숙하게 다룰 수 있게 된다면', '다음은 타입스크립트와 뷰 또는 다른 언어를 공부하는게 목표입니다.'],
         skill: 'typescript, node, vue'
     }
 ];
@@ -163,9 +174,9 @@ class Slide extends Component {
         if( slide.skill !== undefined ){
             let skillList = slide.skill.split(',');
             return(
-                <ul>
-                    {skillList.map((v,i) => { return <li key={i}><Icon.Check size={14} /> {v}</li> })}
-                </ul>
+                <SkillList>
+                    {skillList.map((v,i) => { return <span key={i}><Icon.Check size={14} /> {v}</span> })}
+                </SkillList>
             )
         }
     }
@@ -178,8 +189,8 @@ class Slide extends Component {
         }
         >
             <h2> <span>{slide.title}</span> <Icon.GitCommit size={18} /></h2>
-            { skill() }
             { slide.desc && <article>{slide.desc.map( (v,i) => {return <p key={i}>{v}</p> })}</article>}
+            { skill() }
         </li>
     );
   }

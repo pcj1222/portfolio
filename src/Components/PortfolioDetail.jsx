@@ -42,6 +42,12 @@ const Thumb = styled.div`
     width: 100%;
     text-align: center;
 `;
+const Desc = styled.div`
+    display:block !important;
+    p{
+        padding-left:20px
+    }
+`
 
 
 
@@ -73,10 +79,17 @@ const PortfolioList = ({contents}) => {
                     <span>{select_portfolio.title}</span>
                     {select_portfolio.link && <a target="_blank" href={select_portfolio.link} title="새 창에서 열림"><Icon.ExternalLink /></a>}
                 </h2>
-                {select_portfolio.type && <p><Icon.CheckCircle size={14} /> <span>타입 : {select_portfolio.type}</span></p>}
+                {select_portfolio.type && <p><Icon.CheckCircle size={14} /> <span>작업내용 : {select_portfolio.type}</span></p>}
                 {select_portfolio.participation && <p><Icon.CheckCircle size={14} /> <span>참여도: {select_portfolio.participation}</span></p>}
                 {select_portfolio.skill && <p><Icon.CheckCircle size={14} /> <span>사용기술: {select_portfolio.skill}</span></p>}
-                <div><Icon.CheckCircle size={14} /> <div>상세설명: <p>ㅅ</p></div></div>
+                {/* <div><Icon.CheckCircle size={14} /> <div>상세설명: <p>ㅅ</p></div></div> */}
+                {
+                    select_portfolio.descSet && 
+                    <Desc>
+                        <Icon.CheckCircle size={14} /> 상세설명: 
+                        {select_portfolio.descSet.map((v,i)=> {return <p key={i}><Icon.Minus size={8} />  {v}</p>})}
+                    </Desc>
+                }
 
                 { thumbImg === true ? 
                     select_portfolio.imgSet && select_portfolio.imgSet.map((v,i)=> {return <Thumb key={i}><img src={v}></img></Thumb> }) : 
