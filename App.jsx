@@ -130,7 +130,7 @@ class App extends Component {
                             <h1><NavLink exact to="/"><img src="./src/Assets/Images/logo.png" alt=""/></NavLink></h1>
                             <ul>
                                 <li><NavLink exact to="/home/">About</NavLink></li>
-                                <li><NavLink to="/portfolio/">Portfolio</NavLink></li>
+                                <li><NavLink to="/home/portfolio/">Portfolio</NavLink></li>
                             </ul>
                         </LayoutHeader>
                         <Content>
@@ -147,7 +147,7 @@ class App extends Component {
                                 <Route exact path="/home/">
                                     <About />
                                 </Route>
-                                <Route path="/portfolio/">
+                                <Route path="/home/portfolio/">
                                     <Portfolio />
                                 </Route>
                             </AnimatedSwitch>
