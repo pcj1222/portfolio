@@ -1,32 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
+import * as Icon from 'react-feather';
 
 const WrapDetail = styled.article`
-    /* text-align: center;  */
-    /* display:flex; */
     padding:0 30px;
     h2{
         font-size: 27px;
         font-weight: 600;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         small{
             font-size: 80%;
             font-weight: 400;
             color: #aaa;
         }
+        span{
+            margin-right:10px;
+            vertical-align: middle;
+        }
+    }
+    
+    div{
+        display: inline-block;
+        vertical-align: top;
+        p{
+            margin: 10px 0;
+        }
     }
     p{
         margin-bottom:15px;
+        span{
+            vertical-align: middle;
+        }
+        &:last-child{
+            margin-bottom: 0;
+        }
     }
 `
 const Thumb = styled.div`
-    /* width: 40%; */
-    margin:30px 0;
-`
-const Content = styled.div`
-    /* flex: 1 0 auto; */
-`
+    margin:50px 0;
+    width: 100%;
+    text-align: center;
+`;
+
+
 
 const PortfolioList = ({contents}) => {
     let params = useParams();
@@ -39,29 +56,33 @@ const PortfolioList = ({contents}) => {
             break;
         }
     }
-    
-    console.log(select_portfolio)
+
+    const [thumbImg, setThumbImg] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setThumbImg(true);
+        }, 500);
+    }, [select_portfolio])
+ 
+
     return(
         <WrapDetail> 
-            <Content>
-                <h2>휴롬 <small>(Hurom)</small> <a target="_blank" href={select_portfolio.link} title="새 창에서 열림">&gt;</a></h2>
-                <p>- 반응형 웹사이트</p>
-                <p>- 참여도: 90%</p>
-                <p>- 사용기술: html, css, javascript, jquery</p>
+            <>
+                <h2>
+                    <span>{select_portfolio.title}</span>
+                    {select_portfolio.link && <a target="_blank" href={select_portfolio.link} title="새 창에서 열림"><Icon.ExternalLink /></a>}
+                </h2>
+                {select_portfolio.type && <p><Icon.CheckCircle size={14} /> <span>타입 : {select_portfolio.type}</span></p>}
+                {select_portfolio.participation && <p><Icon.CheckCircle size={14} /> <span>참여도: {select_portfolio.participation}</span></p>}
+                {select_portfolio.skill && <p><Icon.CheckCircle size={14} /> <span>사용기술: {select_portfolio.skill}</span></p>}
+                <div><Icon.CheckCircle size={14} /> <div>상세설명: <p>ㅅ</p></div></div>
 
-                <Thumb>
-                    { (select_portfolio.imgSet).map((v)=> {return <img src={v}></img> }) }
-                    {/* <img src={select_portfolio.imgSet}></img> */}
-                </Thumb>
-
-                <p>??</p>
-
-                {/* <h2>{select_portfolio.title}</h2>
-                <p> {select_portfolio.text[0].text1} </p>
-                <p> {select_portfolio.text[0].text2} </p>
-                {select_portfolio.desc && <p>{select_portfolio.desc}</p>} 
-                {select_portfolio.link && <p><a target="_blank" href={select_portfolio.link} title="새 창에서 열림">홈페이지</a></p>} */}
-            </Content>
+                { thumbImg === true ? 
+                    select_portfolio.imgSet && select_portfolio.imgSet.map((v,i)=> {return <Thumb key={i}><img src={v}></img></Thumb> }) : 
+                    null 
+                }
+            </>
         </WrapDetail>
     )
 }

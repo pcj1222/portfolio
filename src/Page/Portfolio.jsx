@@ -5,7 +5,6 @@ import PortfolioDetail from '../Components/PortfolioDetail';
 import Masonry from 'react-masonry-component';
 import { AnimatedSwitch } from 'react-router-transition';
 
-
 const ItemWrap = styled.div`
     position:relative;
     overflow:hidden;
@@ -54,17 +53,53 @@ const imagesLoadedOptions = { background: '.my-bg-image-el' }
 const Portfolio = () => {
     const contents = [
         {
-            id:1, title: "휴롬", desc: "구축", text: [{text1:"??", text2:"두번재"}] , link:"http://www.hurom.co.kr",
-            thumb:"./src/Assets/Images/Thumb/hurom.png", 
-            imgSet: ["https://placehold.it/1280x600", "https://placehold.it/1280x580"]
+            id:1, title: "휴롬", type: "구축, 반응형", 
+            text: [{text1:"??", text2:"두번재"}], 
+            link:"http://www.hurom.co.kr",
+            participation: '90%',
+            skill : 'html, css, javascript, jquery',
+            thumb:"/src/Assets/Images/Thumb/hurom.png", 
+            imgSet: ["/src/Assets/Images/Portfolio/thumb_hurom1.jpg"]
         },
         {
-            id:2, title: "정토회", desc: "구축", text: "text", link: "", thumb:"./src/Assets/Images/Thumb/jungto.png"
+            id:2, title: "정토회", type: "구축, 데스크탑", 
+            text: [{text1: "text", text2: "2"}], 
+            link: "http://jungto.org", 
+            participation: '100%',
+            skill : 'html, scss, javascript, jquery',
+            thumb:"./src/Assets/Images/Thumb/jungto.png",
+            imgSet: ["/src/Assets/Images/Portfolio/thumb_jungto1.jpg"]
         },
-        {id:3, title: "샘표 연두", desc: "", text: "text", link:"http://yondu.co.kr/m", thumb:"./src/Assets/Images/Thumb/yondu.png"},
-        {id:4, title: "샘표", desc: "유지보수", text: "text", link:"https://www.sempio.com", thumb:"./src/Assets/Images/Thumb/sempio.svg"},
-        {id:5, title: "TK 정형외과", desc: "desc", text: "text", link:"http://www.toptk.co.kr", thumb:"./src/Assets/Images/Thumb/tk.png"},
-        {id:6, title: "시력회복연구소", desc: "desc", text: "text", link:"http://www.eyerec.org/", thumb:"./src/Assets/Images/Thumb/eye.png"},
+        {
+            id:3, title: "샘표 연두", type: "구축, 모바일", 
+            text: "text", link:"http://yondu.co.kr/m", 
+            participation: '100%',
+            skill : 'html, css, javascript, jquery',
+            thumb:"./src/Assets/Images/Thumb/yondu.png",
+            imgSet: ["/src/Assets/Images/Portfolio/thumb_yondu1.jpg"]
+        },
+        {
+            id:4, title: "TK 정형외과", type: "구축, 모바일", 
+            text: "text", link:"http://www.toptk.co.kr",
+            participation: '100%',
+            skill : 'html, css, javascript, jquery', 
+            thumb:"./src/Assets/Images/Thumb/tk.png",
+            imgSet: ["/src/Assets/Images/Portfolio/thumb_toptk.jpg"]
+        },
+        {
+            id:5, title: "시력회복연구소", type: "구축, 데스크탑",
+            text: "text", link:"http://www.eyerec.org/",
+            participation: '100%',
+            skill : 'html, css, javascript, jquery',  
+            thumb:"./src/Assets/Images/Thumb/eye.png",
+            imgSet: ["/src/Assets/Images/Portfolio/thumb_eye1.jpg"]
+        },
+        {
+            id:6, title: "샘표", type: "유지보수", 
+            text: "text", link:"https://www.sempio.com", 
+            thumb:"./src/Assets/Images/Thumb/sempio.svg",
+            imgSet: ["/src/Assets/Images/Portfolio/thumb_sempio.jpg"]
+        },
     ]
 
     const childElements = contents.map(function(content){
@@ -88,9 +123,6 @@ const Portfolio = () => {
                 className="switch-wrapper"
             >
                 <Route exact path="/portfolio">
-                    <h2>
-                        기본페이지
-                    </h2>
                     <ItemWrap>
                         <Masonry
                             className={''} 

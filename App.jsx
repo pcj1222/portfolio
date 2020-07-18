@@ -40,6 +40,9 @@ const GlobalStyle = createGlobalStyle`
         max-width:100%;
 
     }
+    svg{
+        vertical-align: middle;
+    }
     .switch-wrapper {
         position: relative;
     }
@@ -62,6 +65,7 @@ const LayoutHeader = styled.header`
     width:100%;
     max-width: 1480px;
     margin: 0 auto;
+    z-index: 99;
     h1{
         width:60px;
     }
@@ -123,9 +127,8 @@ class App extends Component {
                     : 
                     <>
                         <LayoutHeader>
-                            <h1><NavLink exact to="/"><img src="./src/Img/logo.png" alt=""/></NavLink></h1>
+                            <h1><NavLink exact to="/"><img src="/src/Assets/Images/logo.png" alt=""/></NavLink></h1>
                             <ul>
-                                {/* <li><NavLink exact to="/">Home</NavLink></li> */}
                                 <li><NavLink exact to="/">About</NavLink></li>
                                 <li><NavLink to="/portfolio">Portfolio</NavLink></li>
                             </ul>
@@ -142,7 +145,7 @@ class App extends Component {
                                 className="switch-wrapper"
                             >
                                 <Route exact path="/">
-                                    <About/>
+                                    <About />
                                 </Route>
                                 <Route path="/portfolio">
                                     <Portfolio />
