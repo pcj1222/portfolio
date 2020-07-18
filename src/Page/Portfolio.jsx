@@ -122,7 +122,7 @@ const Portfolio = () => {
                 })}
                 className="switch-wrapper"
             >
-                <Route exact path="/home/portfolio">
+                <Route exact path="/home/portfolio/">
                     <ItemWrap>
                         <Masonry
                             className={''} 
