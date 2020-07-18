@@ -122,7 +122,7 @@ const Portfolio = () => {
                 })}
                 className="switch-wrapper"
             >
-                <Route exact path="/home/portfolio/">
+                <Route exact path="/portfolio/">
                     <ItemWrap>
                         <Masonry
                             className={''} 
@@ -136,7 +136,7 @@ const Portfolio = () => {
                         </Masonry>
                     </ItemWrap>
                 </Route>
-                <Route path="/home/portfolio/:pf_id">
+                <Route path="/portfolio/:pf_id">
                     <PortfolioDetail contents={contents}/>
                 </Route>
             </AnimatedSwitch>

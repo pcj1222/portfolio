@@ -129,8 +129,8 @@ class App extends Component {
                         <LayoutHeader>
                             <h1><NavLink exact to="/"><img src="./src/Assets/Images/logo.png" alt=""/></NavLink></h1>
                             <ul>
-                                <li><NavLink exact to="/home/">About</NavLink></li>
-                                <li><NavLink to="/home/portfolio/">Portfolio</NavLink></li>
+                                <li><NavLink exact to="/">About</NavLink></li>
+                                <li><NavLink to="/portfolio/">Portfolio</NavLink></li>
                             </ul>
                         </LayoutHeader>
                         <Content>
@@ -144,10 +144,10 @@ class App extends Component {
                                 })}
                                 className="switch-wrapper"
                             >
-                                <Route exact path="/home/">
+                                <Route exact path="/">
                                     <About />
                                 </Route>
-                                <Route path="/home/portfolio/">
+                                <Route path="/portfolio/">
                                     <Portfolio />
                                 </Route>
                             </AnimatedSwitch>
